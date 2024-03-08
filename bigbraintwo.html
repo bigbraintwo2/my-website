@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bigbraintwo's Personal Webpage</title>
+    <style>
+		body {
+            background-image: url('bigbrain.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+			background-color: #121212;
+            color: #ffffff;
+            color: cyan;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+		
+        header {
+            text-align: center;
+        }
+
+        h1 {
+            color: orange;
+            margin-bottom: 10px;
+        }
+
+        p {
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            color: cyan;
+        }
+		
+		section {
+            text-align: center;
+        }
+
+        section h2 {
+            color: orange;
+        }
+
+        section p {
+            color: cyan;
+        }
+		
+		body.pride-month {
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* White text color */
+        }
+
+        body.pride-month section h2 {
+            color: #ff79c6; /* Pink */
+        }
+
+        body.pride-month section p {
+            color: #bd93f9; /* Purple */
+        }
+		
+		form {
+            margin-top: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: orange; /* Orange label color */
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #ADD8E6; /* Light blue button */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #87CEEB; /* Lighter blue on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>bigbraintwo</h1>
+        <p>Enthusiastic Programmer | Big Brain Thinker</p>
+        <p id="browser-info"></p>
+    </header>
+
+    <section>
+        <h2>Ducks Defying Nature</h2>
+        <p>In ponds where ripples gently play,<br>
+            Ducks waddle, defying nature's sway.<br>
+            Feathers resist the wind's strong gust,<br>
+            Defiance in quacks, a daring thrust.<br>
+            Against the current, they proudly glide,<br>
+            Nature's rules, by ducks, set aside.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 bigbraintwo. All rights reserved.</p>
+        <p>Connect with me on <a href="https://www.myspace.com" target="_blank">MySpace</a> and <a href="https://www.skype.com" target="_blank">Skype</a>.</p>
+    </footer>
+	
+	<form id="complaint-form">
+        <h2>Submit a Complaint</h2>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="complaint">Your Complaint:</label>
+        <textarea id="complaint" name="complaint" rows="4" required></textarea>
+
+        <button type="submit">Submit Complaint</button>
+    </form>
+
+    <footer>
+        <p>&copy; 2024 bigbraintwo. All rights reserved.</p>
+        <p>Connect with me on <a href="https://www.myspace.com" target="_blank">MySpace</a> and <a href="https://www.skype.com" target="_blank">Skype</a>.</p>
+    </footer>
+
+    <script>
+		// Check if it's Pride Month (June)
+        const today = new Date();
+        const isPrideMonth = today.getMonth() === 5; // JavaScript months are zero-based
+
+        if (isPrideMonth) {
+            document.body.classList.add('pride-month');
+        }
+	
+        let browserInfo = '';
+        const userAgent = navigator.userAgent.toLowerCase();
+
+        if (userAgent.includes('firefox')) {
+            browserInfo = 'Using Firefox 🕶️';
+        } else {
+            browserInfo = `Using ${navigator.appName}`;
+        }
+
+        document.getElementById('browser-info').innerText = browserInfo;
+
+        let currentPosition = document.body.clientWidth;
+
+        function slideBackground() {
+            currentPosition -= 1;
+            document.body.style.backgroundPositionX = currentPosition + 'px';
+
+            // Reset position when the image goes off screen
+            if (currentPosition <= -document.body.clientWidth) {
+                currentPosition = document.body.clientWidth;
+            }
+
+            requestAnimationFrame(slideBackground);
+        }
+
+        slideBackground();
+    </script>
+</body>
+</html>
